@@ -4,10 +4,9 @@ import { Layout, Breadcrumb } from 'antd';
 import Sidebar from './Sidebar/Sidebar';
 import HeaderInner from './HeaderInner/HeaderInner';
 
-
 const { Header, Content, Footer, Sider } = Layout;
 
-class MainLayout extends Component {
+class WholeSaleAdmin extends Component {
     
     state = {
         collapsed: false,
@@ -80,4 +79,4 @@ class MainLayout extends Component {
     }
 }
 
-export default MainLayout;
+export default WholeSaleAdmin;

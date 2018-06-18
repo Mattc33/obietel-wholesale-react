@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import MainLayout from './MainLayout/MainLayout'
+import Router from './Router/Router'
 
 class App extends Component {
 
-    state = {
-
-    }
-
     render() {
         return (
-            <div className="App">
-                <MainLayout />
-            </div>
+            <Router />
         )
     }
 

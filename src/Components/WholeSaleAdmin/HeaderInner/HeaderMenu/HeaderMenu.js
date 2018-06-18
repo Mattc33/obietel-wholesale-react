@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import { Icon, Button } from 'antd';
 
 class HeaderMenu extends React.Component {
@@ -17,7 +18,7 @@ class HeaderMenu extends React.Component {
 
         return (
             <div style={headerMenuStyle}>
-                <Button type="dashed" shape="circle" icon="home" size="large" />
+                <Link to="/"><Button type="dashed" shape="circle" icon="home" size="large" /></Link>
             </div>
         );
         }
