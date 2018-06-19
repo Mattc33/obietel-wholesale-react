@@ -1,14 +1,43 @@
-.headerName {
-    background: '#fff';
-    border-bottom: '1px solid #eee';
-    display: 'flex';
-    align-content: 'space-between';
+.logo {
+    font-weight: bold;
 }
 
-.menuItemStyle {
-    border-bottom: 'none';
+.menu {
+    text-align: center;
+    display: flex;
+    list-style-type: none;
+    margin-left: auto;
+
+    li {
+        padding-left: 20px;
+
+        &:hover {
+            cursor: pointer;
+            color: #335088;
+            text-decoration: none;
+        }
+
+    }
+
+    .link {
+        color: inherit;
+    }
 }
 
-.backgroundWhite {
-    background: '#fff'
+.menuHamburger {
+    display: none;
+}
+
+// * phone
+@media (max-width: 600px) { 
+
+    .menu {
+        display: none;
+    }
+
+    .menuHamburger {
+        display: block;
+        margin-left: auto;
+        font-size: 18px;
+    }
 }

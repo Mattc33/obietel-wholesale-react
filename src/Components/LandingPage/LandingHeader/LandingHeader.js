@@ -1,30 +1,30 @@
 import React from 'react';
 import styles from './LandingHeader.css'
-import { Menu, Layout } from 'antd';
+import { Layout } from 'antd';
 import { Link } from 'react-router-dom';
-
 
 const { Header } = Layout;
 
 const LandingHeader = () => {
 
-    const menuItemStyle = {
-        'border-bottom': 'none'
-    }
+    const headerStyle = {
+        'background': '#fff',
+        'border-bottom': '1px solid #ccc',
+        'display': 'flex',
+        'align-content': 'space-between'
+      }
 
     return (
-        <Header styleName='' style={{background: '#fff'}}>
-            <div style={{'font-weight': 'bold'}}>ObieTel</div>
-            <Menu
-                theme="light"
-                mode="horizontal"
-                style={{ lineHeight: '64px', 'margin-left': 'auto', 'border': 'none' }}
-            >
-                <Menu.Item style={menuItemStyle} key="1">Why ObieTel?</Menu.Item>
-                <Menu.Item style={menuItemStyle} key="2">About Us</Menu.Item>
-                <Menu.Item style={menuItemStyle} key="3"><Link to="/admin">Login</Link></Menu.Item>
-                <Menu.Item style={menuItemStyle} key="4">Register</Menu.Item>
-            </Menu>
+        <Header style={headerStyle}>
+            <div className={styles.logo}>ObieTel</div>
+            <ul className={styles.menu}>
+                <li>Why ObieTel?</li>
+                <li>Pricing?</li>
+                <li>About Us</li>
+                <Link to="/admin" className={styles.link}><li>Login</li></Link>
+                <Link to="/registration" className={styles.link}><li>Register</li></Link>
+            </ul>
+            <div className={styles.menuHamburger}><i class="fas fa-bars"></i></div>
         </Header>
     )
 }

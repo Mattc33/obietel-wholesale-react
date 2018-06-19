@@ -1,0 +1,85 @@
+.heroContainer {
+    height: 100%;
+    background: #fff;
+
+    .callToAction {
+        width: 100%;
+        padding: 30px 60px 10px 60px;
+        font-size: 18px;
+
+        .h1 {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .getStartedButton {
+            width: 100%;
+            height: 40px;
+            background: #192F53;
+        }
+
+        .getStartedText {
+            padding-top: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+    }
+
+    .getStartedImage {
+        text-align: center;
+        padding: 20px 60px 10px 60px;
+
+        img {
+            height: 300px;
+        }
+    }
+}
+
+.hotRates {
+    height: 600px;
+    background: #F5F5F5;
+}
+
+.ourPartners {
+
+}
+
+// * iPhone X
+@media (max-width: 450px) { 
+    .heroContainer {
+        height: 100%;
+        background: #fff;
+    
+        .callToAction {
+            width: 100%;
+            padding: 30px 60px 10px 60px;
+            font-size: 14px;
+    
+            .h1 {
+                font-size: 22px;
+                text-align: center;
+            }
+    
+            .getStartedButton {
+                width: 100%;
+                height: 40px;
+                background: #192F53;
+            }
+    
+            .getStartedText {
+                padding-top: 10px;
+                font-size: 14px;
+                text-align: center;
+            }
+        }
+    
+        .getStartedImage {
+            text-align: center;
+            padding: 10px 60px 10px 60px;
+    
+            img {
+                height: 200px;
+            }
+        }
+    }
+}
