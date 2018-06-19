@@ -1,5 +1,5 @@
 import React from 'react';
-import './LandingHeader.css'
+import styles from './LandingHeader.css'
 import { Menu, Layout } from 'antd';
 import { Link } from 'react-router-dom';
 
@@ -8,19 +8,12 @@ const { Header } = Layout;
 
 const LandingHeader = () => {
 
-    const headerStyle = {
-        'background': '#fff',
-        'border-bottom': '1px solid #eee',
-        'display': 'flex',
-        'align-content': 'space-between'
-    }
-
     const menuItemStyle = {
         'border-bottom': 'none'
     }
 
     return (
-        <Header style={headerStyle}>
+        <Header styleName='' style={{background: '#fff'}}>
             <div style={{'font-weight': 'bold'}}>ObieTel</div>
             <Menu
                 theme="light"

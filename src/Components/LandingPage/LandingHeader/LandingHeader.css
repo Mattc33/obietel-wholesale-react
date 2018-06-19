@@ -1,1 +1,15 @@
-/* No CSS *//*# sourceMappingURL=LandingHeader.css.map */
+.headerName {
+  background: '#fff';
+  border-bottom: '1px solid #eee';
+  display: 'flex';
+  align-content: 'space-between';
+}
+
+.menuItemStyle {
+  border-bottom: 'none';
+}
+
+.backgroundWhite {
+  background: '#fff';
+}
+/*# sourceMappingURL=LandingHeader.css.map */
