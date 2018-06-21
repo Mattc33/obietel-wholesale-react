@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Layout } from 'antd';
 import LandingHeader from '../LandingHeader/LandingHeader';
 import styles from './Registration.css';
-import { Steps, Button, Icon, message } from 'antd';
+import { Steps, Button } from 'antd';
+import RegAccount from './RegAccount/RegAccount';
+
 const Step = Steps.Step;
 
 const steps = [
@@ -31,12 +33,9 @@ const steps = [
 
 class Registration extends Component {
 
-    constructor(props) {
-        super();
-        this.state = {
-            current: 0,
-        };
-    }
+    state = {
+        current: 0,
+    };
 
     next() {
         const current = this.state.current + 1;
@@ -75,9 +74,7 @@ class Registration extends Component {
                         {
                             steps[this.state.current].key === 0
                             &&
-                            <div>
-                                
-                            </div>
+                            <RegAccount />
                         }
                         {
                             steps[this.state.current].key === 1
@@ -100,7 +97,7 @@ class Registration extends Component {
                     <div className={styles.stepActionLeft}>
                         <div className={styles.prevButton}>
                             {
-                                this.state.current > 0
+                                this.state.current >= 1
                                 &&
                                 <Button style={{ marginLeft: 5 }} type="default" onClick={() => this.prev()}>Previous</Button>
                             }
@@ -109,14 +106,29 @@ class Registration extends Component {
                         <div className={styles.stepActionRight}>
                             <div className={styles.nextButton}>
                                 {
-                                    this.state.current < steps.length - 1
+                                    this.state.current === 0
                                     && 
-                                    <Button type="default" onClick={() => this.next()}>Next</Button>
+                                    <Button type="default" onClick={() => this.next()} disabled={false}>Next(Account)</Button>
+                                }
+                                {
+                                    this.state.current === 1
+                                    &&
+                                    <Button type="default" onClick={() => this.next()} disabled={false}>Next(Contract)</Button>
+                                }
+                                {
+                                    this.state.current === 2
+                                    &&
+                                    <Button type="default" onClick={() => this.next()} disabled={false}>Next(Interconnect)</Button>
+                                }
+                                {
+                                    this.state.current === 3
+                                    &&
+                                    <Button type="default" onClick={() => this.next()} disabled={false}>Next(Billing)</Button>
                                 }
                                 {
                                     this.state.current === steps.length - 1
                                     &&
-                                    <Button type="default" onClick={() => console.log('success fn')}>Done</Button>
+                                    <Button type="default" onClick={() => console.log('success fn')} disabled={false}>Done</Button>
                                 }
                             </div>
                         </div>

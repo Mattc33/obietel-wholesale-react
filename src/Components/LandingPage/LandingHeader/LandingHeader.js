@@ -9,9 +9,9 @@ const LandingHeader = () => {
 
     const headerStyle = {
         'background': '#fff',
-        'border-bottom': '1px solid #ccc',
+        'borderBottom': '1px solid #ccc',
         'display': 'flex',
-        'align-content': 'space-between'
+        'alignContent': 'space-between'
       }
 
     return (
@@ -24,7 +24,7 @@ const LandingHeader = () => {
                 <Link to="/admin" className={styles.link}><li>Login</li></Link>
                 <Link to="/registration" className={styles.link}><li>Register</li></Link>
             </ul>
-            <div className={styles.menuHamburger}><i class="fas fa-bars"></i></div>
+            <div className={styles.menuHamburger}><i className="fas fa-bars"></i></div>
         </Header>
     )
 }
