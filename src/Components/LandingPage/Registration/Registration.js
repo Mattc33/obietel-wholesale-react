@@ -4,6 +4,7 @@ import LandingHeader from '../LandingHeader/LandingHeader';
 import styles from './Registration.css';
 import { Steps, Button } from 'antd';
 import RegAccount from './RegAccount/RegAccount';
+import RegInterconnect from './RegInterconnect/RegInterconnect';
 
 const Step = Steps.Step;
 
@@ -34,8 +35,8 @@ const steps = [
 class Registration extends Component {
 
     state = {
-        current: 0,
-    };
+        current: 2,
+    }
 
     next() {
         const current = this.state.current + 1;
@@ -62,9 +63,8 @@ class Registration extends Component {
                     <div className={styles.registrationContainer}>
                         <Steps style={stepperStyle} direction="horizontal" current={current} >
                             {
-                                steps.map( 
-                                    (item) => 
-                                <Step key={item.title} title={item.title} />
+                                steps.map( (item) => 
+                                    <Step key={item.title} title={item.title} />
                                 )
                             }
                         </Steps>
@@ -84,7 +84,7 @@ class Registration extends Component {
                         {
                             steps[this.state.current].key === 2
                             &&
-                            <div>Third</div>
+                            <RegInterconnect />
                         }
                         {
                             steps[this.state.current].key === 3
