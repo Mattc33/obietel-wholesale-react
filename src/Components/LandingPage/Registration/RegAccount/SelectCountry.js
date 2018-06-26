@@ -20,7 +20,6 @@ class SelectCountry extends Component {
             })
             .then( (json) => {
                 this.setState({options: json});
-                console.log(this.state.options);
             })
     }
     

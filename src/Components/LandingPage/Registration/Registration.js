@@ -35,7 +35,7 @@ const steps = [
 class Registration extends Component {
 
     state = {
-        current: 2,
+        current: 0
     }
 
     next() {
@@ -74,7 +74,7 @@ class Registration extends Component {
                         {
                             steps[this.state.current].key === 0
                             &&
-                            <RegAccount />
+                            <RegAccount setClick={click => this.clickAccount = click} />
                         }
                         {
                             steps[this.state.current].key === 1
@@ -84,7 +84,7 @@ class Registration extends Component {
                         {
                             steps[this.state.current].key === 2
                             &&
-                            <RegInterconnect />
+                            <RegInterconnect setClick={click => this.clickInterconnect = click}/>
                         }
                         {
                             steps[this.state.current].key === 3
@@ -108,7 +108,7 @@ class Registration extends Component {
                                 {
                                     this.state.current === 0
                                     && 
-                                    <Button type="default" onClick={() => this.next()} disabled={false}>Next(Account)</Button>
+                                    <Button type="default" onClick={ () => {this.clickAccount(); this.next();} }  disabled={false} >Next(Account)</Button>
                                 }
                                 {
                                     this.state.current === 1
@@ -118,7 +118,7 @@ class Registration extends Component {
                                 {
                                     this.state.current === 2
                                     &&
-                                    <Button type="default" onClick={() => this.next()} disabled={false}>Next(Interconnect)</Button>
+                                    <Button type="default" onClick={() => {this.clickInterconnect(); this.next();}} disabled={false}>Next(Interconnect)</Button>
                                 }
                                 {
                                     this.state.current === 3

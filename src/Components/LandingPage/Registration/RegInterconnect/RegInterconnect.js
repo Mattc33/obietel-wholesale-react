@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Row, Col, Form, Icon, Input, Tooltip, Select } from 'antd';
 import InputTextFormItem from '../../../Shared/Forms/InputTextFormItem';
+import RegTestingDynamicForm from './RegTestingDynamicForm';
 
-const InputGroup = Input.Group;
-const { TextArea } = Input;
 const Option = Select.Option;
 
 class RegInterconnect extends Component {
@@ -12,12 +11,16 @@ class RegInterconnect extends Component {
         // * Interconnection Profile
             ipAddress: '',
             port: '',
-            codecs: '',
+            codecs: [],
         // * NOC Contact
             nocEmail: '',
             nocSkype: '',
         // * Testing
-            interconnectionTesting: ''
+            interconnectionTesting: []
+    }
+
+    componentDidMount() {
+        this.props.setClick(this.handleSubmit)
     }
 
     emitEmptyHandler = (e) => {
@@ -29,10 +32,11 @@ class RegInterconnect extends Component {
     }
 
     handleSubmit = () => {
-        alert('form is submitted');
+        console.log(this.state);
     }
 
     codecsChangeHandler = (value) => {
+        this.setState({codecs: value});
         console.log(value);
     }
 
@@ -55,28 +59,28 @@ class RegInterconnect extends Component {
                                 onChange={ this.onChangeInputHandler }
                             />
                             <InputTextFormItem
-                                classProps={{'marginTop': '20px'}}
+                                classProps={{'marginTop': '20px'}}  
                                 text="* Port:" span={24} placeholder='Enter Port' 
                                 suffix={portSuffix} value={this.state.port} id="port"
                                 onChange={ this.onChangeInputHandler }
                             />
                             <Col span={24} style={{'marginTop': '20px'}}>
-                                <span>* Supported Codecs</span>
-                                    <Select
-                                        showSearch
-                                        mode="multiple"
-                                        placeholder="Select Codecs"
-                                        optionFilterProp="children"
-                                        filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                                        onChange={this.codecsChangeHandler}
-                                    >
-                                        <Option value="G711">G.711</Option>
-                                        <Option value="G722">G.722</Option>
-                                        <Option value="G723">G.723</Option>
-                                        <Option value="G726">G.726</Option>
-                                        <Option value="G728">G.728</Option>
-                                        <Option value="G729">G.729</Option>
-                                    </Select>
+                                <span>* Supported Codecs: </span>
+                                <Select
+                                    showSearch
+                                    mode="multiple"
+                                    placeholder="Select Codecs"
+                                    optionFilterProp="children"
+                                    filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                                    onChange={this.codecsChangeHandler}
+                                >
+                                    <Option value="G711">G.711</Option>
+                                    <Option value="G722">G.722</Option>
+                                    <Option value="G723">G.723</Option>
+                                    <Option value="G726">G.726</Option>
+                                    <Option value="G728">G.728</Option>
+                                    <Option value="G729">G.729</Option>
+                                </Select>
                             </Col>
                         </Row>
                         <Row style={{marginTop: '40px'}}>
@@ -104,18 +108,20 @@ class RegInterconnect extends Component {
                     <Col span={10}>
                         <Row span={24}>
                             <h1>Testing 
-                                <Tooltip title="For example: 12345678901, 14327650981">
+                                <Tooltip title="For example: 12345678901">
                                     <Icon type="question-circle-o" style={{'paddingLeft': '5px', 'fontSize': '16px'}} />
                                 </Tooltip>
                             </h1>
                         </Row>
-                        <TextArea autosize placeHolder='Enter Test Numbers seperated by commas'/>
+                        
+                        {/* Dynamic Form */}
+                        <RegTestingDynamicForm />
+
                     </Col>
                 </Row>
             </Form>
         )
     }
-
 }
 
 export default RegInterconnect;

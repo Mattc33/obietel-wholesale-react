@@ -23,6 +23,10 @@ class RegAccount extends Component {
             password: '',
             confirmPassword: ''
     }
+
+    componentDidMount() {
+        this.props.setClick(this.handleSubmit)
+    }
     
     emitEmptyHandler = (e) => {
         this.setState({ [e.target.id]: '' });
@@ -33,7 +37,8 @@ class RegAccount extends Component {
     }
 
     handleSubmit = () => {
-        alert('form is submitted');
+        console.log('form is submitted');
+        console.log(this.state);
     }
 
     changeCheckboxHandler = () => {
