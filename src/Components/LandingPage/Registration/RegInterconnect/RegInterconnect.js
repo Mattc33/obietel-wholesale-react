@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Form, Icon, Input, Tooltip, Select } from 'antd';
+import { Row, Col, Form, Icon, Tooltip, Select } from 'antd';
 import InputTextFormItem from '../../../Shared/Forms/InputTextFormItem';
 import RegTestingDynamicForm from './RegTestingDynamicForm';
 

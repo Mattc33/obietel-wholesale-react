@@ -1,4 +1,4 @@
-.heroContainer {
+.showcaseContainer {
     height: 100%;
     background: #fff;
 
@@ -25,8 +25,7 @@
         }
     }
 
-    .getStartedImage {
-        text-align: center;
+    .showcaseImage {
         padding: 20px 60px 10px 60px;
 
         img {
@@ -44,11 +43,31 @@
 
 }
 
+@media (min-width: 1000px ) {
+    .showcaseContainer {
+        display: grid;
+
+        .callToAction {
+            
+        }
+
+        .showcaseImage {
+            text-align: center;
+            padding: 20px 60px 10px 60px;
+
+            img {
+                height: 300px;
+            }
+        }
+    }
+}
+
 // * iPhone X
 @media (max-width: 450px) { 
-    .heroContainer {
+    .showcaseContainer {
         height: 100%;
         background: #fff;
+        display: flex;
     
         .callToAction {
             width: 100%;
@@ -73,7 +92,7 @@
             }
         }
     
-        .getStartedImage {
+        .showcaseImage {
             text-align: center;
             padding: 10px 60px 10px 60px;
     

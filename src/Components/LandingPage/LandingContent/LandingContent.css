@@ -1,37 +1,36 @@
-.heroContainer {
+.showcaseContainer {
   height: 100%;
   background: #fff;
 }
 
-.heroContainer .callToAction {
+.showcaseContainer .callToAction {
   width: 100%;
   padding: 30px 60px 10px 60px;
   font-size: 18px;
 }
 
-.heroContainer .callToAction .h1 {
+.showcaseContainer .callToAction .h1 {
   font-size: 50px;
   text-align: center;
 }
 
-.heroContainer .callToAction .getStartedButton {
+.showcaseContainer .callToAction .getStartedButton {
   width: 100%;
   height: 40px;
   background: #192F53;
 }
 
-.heroContainer .callToAction .getStartedText {
+.showcaseContainer .callToAction .getStartedText {
   padding-top: 10px;
   font-size: 14px;
   text-align: center;
 }
 
-.heroContainer .getStartedImage {
-  text-align: center;
+.showcaseContainer .showcaseImage {
   padding: 20px 60px 10px 60px;
 }
 
-.heroContainer .getStartedImage img {
+.showcaseContainer .showcaseImage img {
   height: 300px;
 }
 
@@ -40,35 +39,49 @@
   background: #F5F5F5;
 }
 
+@media (min-width: 1000px) {
+  .showcaseContainer {
+    display: grid;
+  }
+  .showcaseContainer .showcaseImage {
+    text-align: center;
+    padding: 20px 60px 10px 60px;
+  }
+  .showcaseContainer .showcaseImage img {
+    height: 300px;
+  }
+}
+
 @media (max-width: 450px) {
-  .heroContainer {
+  .showcaseContainer {
     height: 100%;
     background: #fff;
+    display: flex;
   }
-  .heroContainer .callToAction {
+  .showcaseContainer .callToAction {
     width: 100%;
     padding: 30px 60px 10px 60px;
     font-size: 14px;
   }
-  .heroContainer .callToAction .h1 {
+  .showcaseContainer .callToAction .h1 {
     font-size: 22px;
     text-align: center;
   }
-  .heroContainer .callToAction .getStartedButton {
+  .showcaseContainer .callToAction .getStartedButton {
     width: 100%;
     height: 40px;
     background: #192F53;
   }
-  .heroContainer .callToAction .getStartedText {
+  .showcaseContainer .callToAction .getStartedText {
     padding-top: 10px;
     font-size: 14px;
     text-align: center;
   }
-  .heroContainer .getStartedImage {
+  .showcaseContainer .showcaseImage {
     text-align: center;
     padding: 10px 60px 10px 60px;
   }
-  .heroContainer .getStartedImage img {
+  .showcaseContainer .showcaseImage img {
     height: 200px;
   }
 }

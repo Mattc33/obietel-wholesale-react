@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Row, Col, Form, Icon, Tooltip, Checkbox } from 'antd';
+import { Row, Col, Form, Icon, Checkbox, Input } from 'antd';
 import InputTextFormItem from '../../../Shared/Forms/InputTextFormItem';
 
 import SelectCountry from './SelectCountry';
+
+const FormItem = Form.Item;
 
 class RegAccount extends Component {
 
@@ -61,58 +63,187 @@ class RegAccount extends Component {
         const passwordSuffix = this.state.password ? <Icon type="close-circle" onClick={this.emitEmptyHandler} id="password" /> : null;
         const confirmPasswordSuffix = this.state.confirmPassword ? <Icon type="close-circle" onClick={this.emitEmptyHandler} id="confirmPassword" /> : null;
 
+        const {getFieldDecorator, getFieldsError} = this.props.form;
+
+        const firstNameInput = (
+            <FormItem label='First Name:'>
+            {
+                getFieldDecorator('firstName', 
+                    {rules: [{required: true, message: "Please input a first name.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter First Name'
+                            suffix={firstNameSuffix}
+                            value={this.state.firstName}
+                            id='firstName'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const lastNameInput = (
+            <FormItem label='Last Name:'>
+            {
+                getFieldDecorator('lastName', 
+                    {rules: [{required: true, message: "Please input a last name.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter Last Name'
+                            suffix={lastNameSuffix}
+                            value={this.state.lastName}
+                            id='lastName'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const phoneNumberInput = (
+            <FormItem label='Telephone Number:' style={{marginTop: '-10px'}}>
+            {
+                getFieldDecorator('phoneNumber', 
+                    {rules: [{required: true, message: "Please input a telephone number.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter Telephone Number'
+                            prefix={<i className='fas fa-phone' style={{color: '#ccc'}} />}
+                            suffix={phoneNumberSuffix}
+                            value={this.state.phoneNumber}
+                            id='phoneNumber'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const jobPositionInput = (
+            <FormItem label='Job Position:' style={{marginTop: '-10px'}}>
+            {
+                getFieldDecorator('jobPosition', 
+                    {rules: [{required: true, message: "Please input a job position.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter Job Position'
+                            prefix={<i className='fas fa-user-md' style={{color: '#ccc'}} />}
+                            suffix={jobPositionSuffix}
+                            value={this.state.jobPosition}
+                            id='jobPosition'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const emailInput = (
+            <FormItem label='Email:'>
+            {
+                getFieldDecorator('email', 
+                    {rules: [{required: true, message: "Please input an email.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter Email Address'
+                            prefix={<i className='fas fa-user' style={{color: '#ccc'}} />}
+                            suffix={emailSuffix}
+                            value={this.state.email}
+                            id='email'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const passwordInput = (
+            <FormItem label='Password:' style={{marginTop: '-10px'}}>
+            {
+                getFieldDecorator('password', 
+                    {rules: [{required: true, message: "Please input a password.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter Email Address'
+                            prefix={<i className='fas fa-key' style={{color: '#ccc'}} />}
+                            suffix={passwordSuffix}
+                            value={this.state.password}
+                            id='password'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const confirmPasswordInput = (
+            <FormItem label='Confirm Password:' style={{marginTop: '-10px'}}>
+            {
+                getFieldDecorator('confirmPassword', 
+                    {rules: [{required: true, message: "Please input password again.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter Password Again'
+                            
+                            suffix={confirmPasswordSuffix}
+                            value={this.state.confirmPassword}
+                            id='confirmPassword'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
         return (
             <Form onSubmit={this.handleSubmit}>
                 <Row>
                     <Col span={10}>
                         <Row><h1>Account</h1></Row>
                         <Row>
-                            <InputTextFormItem
-                                text='* First Name:' span={12} placeholder='Enter First Name' 
-                                suffix={firstNameSuffix} value={this.state.firstName} id="firstName"
-                                onChange={ this.onChangeInputHandler }
-                            />
+                            <Col span={12}>
+                                {firstNameInput}
+                            </Col>
                             <Col span={2} />
-                            <InputTextFormItem
-                                text='* Last Name:' span={10} placeholder='Enter Last Name' 
-                                suffix={lastNameSuffix} value={this.state.lastName} id="lastName"
-                                onChange={ this.onChangeInputHandler }
-                            />
-                            <InputTextFormItem 
-                                classProps={{'marginTop': '20px'}}
-                                text='* Telephone Number:' span={24} placeholder="Enter Your Telephone Number"
-                                prefix={<i className='fas fa-phone' style={{color: '#ccc'}} />} suffix={phoneNumberSuffix} 
-                                value={this.state.phoneNumber} id="phoneNumber" onChange={ this.onChangeInputHandler }
-                            />
-                            <InputTextFormItem
-                                classProps={{'marginTop': '20px'}}
-                                text='* Job Position:' span={24} placeholder="Enter Job Position"
-                                prefix={<i className='fas fa-user-md' style={{color: '#ccc'}} />} suffix={jobPositionSuffix}
-                                value={this.state.jobPosition} id="jobPosition" onChange={this.onChangeInputHandler}
-                            />
+                            <Col span={10}>
+                                {lastNameInput}
+                            </Col>
+
+                            <Col span={24}>
+                                {phoneNumberInput}
+                            </Col>
+
+                            <Col span={24}>
+                                {jobPositionInput}
+                            </Col>
                         </Row>
 
-                        <Row style={{'marginTop': '70px'}}><h1>Create User</h1></Row>
+                        <Row><h1>Create User</h1></Row>
                         <Row>
-                            <InputTextFormItem
-                                text='* Email:' span={24} placeholder="Enter Email Address"
-                                prefix={<i className='fas fa-user' style={{color: '#ccc'}} />} suffix={emailSuffix}
-                                value={this.state.email} id="email" onChange={this.onChangeInputHandler}
-                            />
-                            <InputTextFormItem
-                                classProps={{'marginTop': '20px'}}
-                                text='* Password:' span={24} placeholder="Enter Password"
-                                prefix={<i className='fas fa-key' style={{color: '#ccc'}} />} suffix={passwordSuffix}
-                                value={this.state.password} id="password" onChange={this.onChangeInputHandler}
-                                type="password"
-                            />
-                            <InputTextFormItem
-                                classProps={{'marginTop': '20px'}}
-                                text='* Confirm Password:' span={24} placeholder="Enter Password Again"
-                                prefix={<i className='fas fa-key' style={{color: '#ccc'}} />} suffix={confirmPasswordSuffix}
-                                value={this.state.confirmPassword} id="confirmPassword" onChange={this.onChangeInputHandler}
-                                type="password"
-                            />
+                            <Col span={24}>
+                                {emailInput}
+                            </Col>
+                            <Col span={24}>
+                                {passwordInput}
+                            </Col>
+                            <Col span={24}>
+                                {confirmPasswordInput}
+                            </Col>
                         </Row>
                     </Col>
 
@@ -153,7 +284,7 @@ class RegAccount extends Component {
                     </Col>
                 </Row>
 
-                <Row style={{marginTop: '30px'}}>
+                <Row style={{marginTop: '10px'}}>
                     <Checkbox onChange={ this.changeCheckboxHandler.bind(this, 'terms') } />
                     <span>I understand and agree with the <a>Terms of Service</a> and <a>Privacy Policy</a></span>
                     <div><Checkbox /><span>Not a Robot</span></div>
@@ -164,4 +295,4 @@ class RegAccount extends Component {
     }
 }
 
-export default RegAccount;
+export default Form.create()(RegAccount);

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import { Icon, Button } from 'antd';
+import {  Button } from 'antd';
 
-class HeaderMenu extends React.Component {
+class HeaderMenu extends Component {
 
     handleClick = (e) => {
 

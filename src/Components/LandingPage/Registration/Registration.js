@@ -3,8 +3,10 @@ import { Layout } from 'antd';
 import LandingHeader from '../LandingHeader/LandingHeader';
 import styles from './Registration.css';
 import { Steps, Button } from 'antd';
+
 import RegAccount from './RegAccount/RegAccount';
 import RegInterconnect from './RegInterconnect/RegInterconnect';
+import RegBilling from './RegBilling/RegBilling';
 
 const Step = Steps.Step;
 
@@ -89,7 +91,12 @@ class Registration extends Component {
                         {
                             steps[this.state.current].key === 3
                             &&
-                            <div>Fourth</div>
+                            <RegBilling setClick={click => this.clickBilling = click}/>
+                        }
+                        {
+                            steps[this.state.current].key === 4
+                            &&
+                            <div>Fifth</div>
                         }
                     </div>
                     
@@ -123,7 +130,7 @@ class Registration extends Component {
                                 {
                                     this.state.current === 3
                                     &&
-                                    <Button type="default" onClick={() => this.next()} disabled={false}>Next(Billing)</Button>
+                                    <Button type="default" onClick={() => {this.clickBilling(); this.next();}} disabled={false}>Next(Billing)</Button>
                                 }
                                 {
                                     this.state.current === steps.length - 1
