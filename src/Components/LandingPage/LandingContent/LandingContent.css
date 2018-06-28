@@ -1,88 +1,92 @@
 .showcaseContainer {
-  height: 100%;
+  height: auto;
   background: #fff;
+  display: grid;
+  grid-template-columns: 10% 1fr 10%;
+  border-bottom: 1px solid #ccc;
+  padding: 20px 0 20px 0;
 }
 
 .showcaseContainer .callToAction {
-  width: 100%;
-  padding: 30px 60px 10px 60px;
   font-size: 18px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5%;
 }
 
-.showcaseContainer .callToAction .h1 {
-  font-size: 50px;
-  text-align: center;
+.showcaseContainer .callToAction .textGroup {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  display: flex;
+  flex-direction: column;
 }
 
-.showcaseContainer .callToAction .getStartedButton {
+.showcaseContainer .callToAction .textGroup .h1 {
+  font-size: 40px;
+  align-self: center;
+}
+
+.showcaseContainer .callToAction .textGroup .getStartedButton {
+  width: 70%;
+  align-self: center;
+}
+
+.showcaseContainer .callToAction .textGroup .getStartedButton Button {
   width: 100%;
-  height: 40px;
-  background: #192F53;
+  margin-bottom: 10px;
+  background: #193055;
 }
 
-.showcaseContainer .callToAction .getStartedText {
-  padding-top: 10px;
-  font-size: 14px;
-  text-align: center;
+.showcaseContainer .callToAction .textGroup .getStartedText {
+  font-size: 12px;
+  align-self: center;
 }
 
-.showcaseContainer .showcaseImage {
-  padding: 20px 60px 10px 60px;
+.showcaseContainer .callToAction .showcaseImage {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
-.showcaseContainer .showcaseImage img {
-  height: 300px;
+.showcaseContainer .callToAction .showcaseImage img {
+  height: 400px;
 }
 
-.hotRates {
-  height: 600px;
-  background: #F5F5F5;
-}
-
-@media (min-width: 1000px) {
-  .showcaseContainer {
-    display: grid;
-  }
-  .showcaseContainer .showcaseImage {
-    text-align: center;
-    padding: 20px 60px 10px 60px;
-  }
-  .showcaseContainer .showcaseImage img {
+@media (max-width: 1000px) {
+  .showcaseContainer .callToAction .showcaseImage img {
     height: 300px;
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 800px) {
   .showcaseContainer {
-    height: 100%;
-    background: #fff;
-    display: flex;
+    height: auto;
   }
   .showcaseContainer .callToAction {
-    width: 100%;
-    padding: 30px 60px 10px 60px;
-    font-size: 14px;
+    grid-template-columns: 1fr;
   }
-  .showcaseContainer .callToAction .h1 {
-    font-size: 22px;
-    text-align: center;
-  }
-  .showcaseContainer .callToAction .getStartedButton {
-    width: 100%;
-    height: 40px;
-    background: #192F53;
-  }
-  .showcaseContainer .callToAction .getStartedText {
+  .showcaseContainer .callToAction .textGroup {
     padding-top: 10px;
-    font-size: 14px;
-    text-align: center;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-row-end: 2;
   }
-  .showcaseContainer .showcaseImage {
-    text-align: center;
-    padding: 10px 60px 10px 60px;
+  .showcaseContainer .callToAction .showcaseImage {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    padding: 10px 0 10px 0;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
   }
-  .showcaseContainer .showcaseImage img {
-    height: 200px;
+  .showcaseContainer .callToAction .showcaseImage img {
+    height: 300px;
   }
 }
 /*# sourceMappingURL=LandingContent.css.map */

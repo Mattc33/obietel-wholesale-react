@@ -20,21 +20,26 @@
 }
 
 .menu .link {
-  color: inherit;
+  color: black;
+  text-decoration: none;
+}
+
+.menu .link:active {
+  text-decoration: none;
 }
 
 .menuHamburger {
   display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .menu {
     display: none;
   }
   .menuHamburger {
     display: block;
     margin-left: auto;
-    font-size: 18px;
+    font-size: 26px;
   }
 }
 /*# sourceMappingURL=LandingHeader.css.map */

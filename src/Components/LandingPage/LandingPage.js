@@ -13,8 +13,8 @@ const LandingPage = () => {
             <LandingHeader />
             <LandingContent />
 
-            <Footer>
-            </Footer>
+            {/* <Footer>
+            </Footer> */}
         </Layout>
     )
 

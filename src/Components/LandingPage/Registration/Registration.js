@@ -115,7 +115,7 @@ class Registration extends Component {
                                 {
                                     this.state.current === 0
                                     && 
-                                    <Button type="default" onClick={ () => {this.clickAccount(); this.next();} }  disabled={false} >Next(Account)</Button>
+                                    <Button type="default" onClick={ () => {this.clickAccount(); this.next();} }  disabled={false} >Next</Button>
                                 }
                                 {
                                     this.state.current === 1

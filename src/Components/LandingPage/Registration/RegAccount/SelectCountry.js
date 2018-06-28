@@ -30,7 +30,7 @@ class SelectCountry extends Component {
                 placeholder="Select Country"
                 optionFilterProp="children"
             >
-                { this.state.options.map((option, key) => <option key={key} >{option.country}</option>) }
+                { this.state.options.map((option, key) => <Option key={key} >{option.country}</Option>) }
             </Select>
         )
     }

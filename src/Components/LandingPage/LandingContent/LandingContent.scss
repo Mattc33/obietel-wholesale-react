@@ -1,104 +1,96 @@
 .showcaseContainer {
-    height: 100%;
+    height: auto;
     background: #fff;
+    display: grid;
+    grid-template-columns: 10% 1fr 10%;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0 20px 0;
 
     .callToAction {
-        width: 100%;
-        padding: 30px 60px 10px 60px;
         font-size: 18px;
-
-        .h1 {
-            font-size: 50px;
-            text-align: center;
-        }
-
-        .getStartedButton {
-            width: 100%;
-            height: 40px;
-            background: #192F53;
-        }
-
-        .getStartedText {
-            padding-top: 10px;
-            font-size: 14px;
-            text-align: center;
-        }
-    }
-
-    .showcaseImage {
-        padding: 20px 60px 10px 60px;
-
-        img {
-            height: 300px;
-        }
-    }
-}
-
-.hotRates {
-    height: 600px;
-    background: #F5F5F5;
-}
-
-.ourPartners {
-
-}
-
-@media (min-width: 1000px ) {
-    .showcaseContainer {
+        grid-column-start: 2;
+        grid-column-end: 3;
         display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 5%;
 
-        .callToAction {
-            
+        .textGroup {
+            grid-column-start: 3;
+            grid-column-end: 4;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            display: flex;
+            flex-direction: column;
+
+            .h1 {
+                font-size: 40px;
+                align-self: center;
+            }
+
+            .getStartedButton {
+                width: 70%;
+                align-self: center;
+
+                Button {
+                    width: 100%;
+                    margin-bottom: 10px;
+                    background: #193055;
+                }
+            }
+
+            .getStartedText {
+                font-size: 12px;
+                align-self: center;
+            }
         }
 
         .showcaseImage {
-            text-align: center;
-            padding: 20px 60px 10px 60px;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 2;
+            grid-row-end: 3;
 
             img {
-                height: 300px;
+                height: 400px;
             }
         }
     }
 }
 
-// * iPhone X
-@media (max-width: 450px) { 
+@media (max-width: 1000px ) {
+    .showcaseContainer .callToAction .showcaseImage img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 800px ) {
     .showcaseContainer {
-        height: 100%;
-        background: #fff;
-        display: flex;
+        height: auto;
     
         .callToAction {
-            width: 100%;
-            padding: 30px 60px 10px 60px;
-            font-size: 14px;
-    
-            .h1 {
-                font-size: 22px;
-                text-align: center;
-            }
-    
-            .getStartedButton {
-                width: 100%;
-                height: 40px;
-                background: #192F53;
-            }
-    
-            .getStartedText {
+            grid-template-columns: 1fr;
+
+            .textGroup {
                 padding-top: 10px;
-                font-size: 14px;
-                text-align: center;
+                grid-column-start: 1;
+                grid-row-start: 1;
+                grid-row-end: 2;
             }
-        }
     
-        .showcaseImage {
-            text-align: center;
-            padding: 10px 60px 10px 60px;
+            .showcaseImage {
+                grid-column-start: 1;
+                grid-row-start: 2;
+                grid-row-end: 3;
+                padding: 10px 0 10px 0;
+                display: flex;
+                justify-items: center;
+                justify-content: center;
     
-            img {
-                height: 200px;
+                img {
+                    height: 300px;
+                }
             }
         }
     }
+
 }

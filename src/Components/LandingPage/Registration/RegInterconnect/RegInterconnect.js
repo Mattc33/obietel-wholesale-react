@@ -40,6 +40,37 @@ class RegInterconnect extends Component {
         console.log(value);
     }
 
+    /* const ipAddressInput = (
+
+    )
+    */
+
+    /* const port = (
+
+    ) 
+    */
+
+    /* const codecs = (
+
+    )
+    */
+
+    /* const nocEmail = (
+
+    )
+    */
+
+    /* const nocSkype = (
+
+    )
+    */
+
+    /* const interconnectionTesting = (
+        
+    )
+    */
+
+
     render() {
         const ipAddressSuffix = this.state.ipAddress ? <Icon type="close-circle" onClick={this.emitEmptyHandler} id="ipAddress" /> : null;
         const portSuffix = this.state.port ? <Icon type="close-circle" onClick={this.emitEmptyHandler} id="port" /> : null;

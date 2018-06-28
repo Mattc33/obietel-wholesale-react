@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Form, Icon, Checkbox, Input } from 'antd';
-import InputTextFormItem from '../../../Shared/Forms/InputTextFormItem';
-
+import { Row, Col, Form, Icon, Checkbox, Input, Button } from 'antd';
 import SelectCountry from './SelectCountry';
 
 const FormItem = Form.Item;
@@ -23,7 +21,10 @@ class RegAccount extends Component {
         // * User
             email: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+        // * Checks
+            terms: '',
+            notRobot: ''
     }
 
     componentDidMount() {
@@ -45,6 +46,11 @@ class RegAccount extends Component {
 
     changeCheckboxHandler = () => {
 
+    }
+
+    hasErrors = (fieldsError) => {
+        console.log(Object.keys(fieldsError).some(field => fieldsError[field]))
+        return Object.keys(fieldsError).some(field => fieldsError[field]);
     }
 
     render() {
@@ -198,10 +204,93 @@ class RegAccount extends Component {
                     <span>
                         <Input
                             placeholder='Enter Password Again'
-                            
+                            prefix={<i className='fas fa-key' style={{color: '#ccc'}} />}
                             suffix={confirmPasswordSuffix}
                             value={this.state.confirmPassword}
                             id='confirmPassword'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const companyNameInput = (
+            <FormItem label='Company Name:' style={{marginTop: '-10px'}}>
+            {
+                getFieldDecorator('companyName', 
+                    {rules: [{required: true, message: "Please input company name.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter Company Name'
+                            suffix={companyNameSuffix}
+                            value={this.state.companyName}
+                            id='companyName'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const companyAddressInput = (
+            <FormItem label='Address:' style={{marginTop: '-10px'}}>
+            {
+                getFieldDecorator('companyAddress', 
+                    {rules: [{required: true, message: "Please input company ddress.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter Company Address'
+                            prefix={<i className='fas fa-thumbtack' style={{color: '#ccc'}} />}
+                            suffix={companyAddressSuffix}
+                            value={this.state.companyAddress}
+                            id='companyAddress'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const companyCity = (
+            <FormItem label='City:' style={{marginTop: '-10px'}}>
+            {
+                getFieldDecorator('companyCity', 
+                    {rules: [{required: true, message: "Please input company city.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter Company City'
+                            prefix={<i className='fas fa-map-marker-alt' style={{color: '#ccc'}} />}
+                            suffix={companyCitySuffix}
+                            value={this.state.companyCity}
+                            id='companyCity'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const companyZipcode = (
+            <FormItem label='Zipcode:' style={{marginTop: '-10px'}}>
+            {
+                getFieldDecorator('companyZipcode', 
+                    {rules: [{required: true, message: "Please input company zipcode.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter Company Zipcode'
+                            prefix={<i className='fas fa-map-signs' style={{color: '#ccc'}} />}
+                            suffix={companyZipcodeSuffix}
+                            value={this.state.companyZipcode}
+                            id='companyZipcode'
                             onChange={this.onChangeInputHandler}
                         />
                     </span>
@@ -252,43 +341,59 @@ class RegAccount extends Component {
                     <Col span={10}>
                         <Row><h1>Company</h1></Row>
                         <Row>
-                            <InputTextFormItem 
-                                text='* Company Name:' span={24} placeholder="Enter Company's Name"
-                                suffix={companyNameSuffix} value={this.state.companyName} id="companyName"
-                                onChange={ this.onChangeInputHandler }
-                            />
-                            <InputTextFormItem
-                                classProps={{'marginTop': '20px'}}
-                                text='* Address:' span={24} placeholder="Enter Company's Address"
-                                prefix={<i className='fas fa-thumbtack' style={{color: '#ccc'}} />} suffix={companyAddressSuffix}
-                                value={this.state.companyAddress} id="companyAddress" onChange={this.onChangeInputHandler}
-                            />
-                            <InputTextFormItem
-                                classProps={{'marginTop': '20px'}}
-                                text='* City:' span={12} placeholder="Enter City"
-                                prefix={<i className='fas fa-map-marker-alt' style={{color: '#ccc'}} />}suffix={companyCitySuffix}
-                                value={this.state.companyCity} id="companyCity" onChange={this.onChangeInputHandler}
-                            />
-                            <Col span={2} />
-                            <InputTextFormItem
-                                classProps={{'marginTop': '20px'}}
-                                text='* Zipcode:' span={10} placeholder="Enter The Zipcode"
-                                prefix={<i className='fas fa-map-signs' style={{color: '#ccc'}} />} suffix={companyZipcodeSuffix}
-                                value={this.state.companyZipcode} id="companyZipcode" onChange={this.onChangeInputHandler}
-                            />
-                            <Col span={14} style={{'marginTop': '20px'}}>
-                                <span>* Country:</span>
-                                <SelectCountry />
+                        <Col span={24}>
+                            {companyNameInput}
+                        </Col>
+                        <Col span={24}>
+                            {companyAddressInput}
+                        </Col>
+                        <Col span={12}>
+                            {companyCity}
+                        </Col>
+                        <Col span={2} />
+                        <Col span={10}>
+                            {companyZipcode}
+                        </Col>
+                            <Col span={14} >
+                                <FormItem label='Country:' style={{'marginTop': '-10px'}}>
+                                {
+                                    getFieldDecorator('companyCountry', 
+                                        {rules: [{required: true, message: "Please select a country."}]}
+                                    ) ( 
+                                    <SelectCountry />
+                                    )
+                                }
+                                </FormItem>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
 
                 <Row style={{marginTop: '10px'}}>
-                    <Checkbox onChange={ this.changeCheckboxHandler.bind(this, 'terms') } />
-                    <span>I understand and agree with the <a>Terms of Service</a> and <a>Privacy Policy</a></span>
-                    <div><Checkbox /><span>Not a Robot</span></div>
+                    <FormItem >
+                        {
+                            getFieldDecorator('terms', 
+                                {rules: [{required: true, message: 'checkbox'}]}
+                        ) (
+                            <span>
+                                <Checkbox onChange={ this.changeCheckboxHandler.bind(this, 'terms') } style={{marginRight: 10}}/>
+                                I understand and agree with the <a>Terms of Service</a> and <a>Privacy Policy</a>
+                            </span>
+                        )
+                        }
+                    </FormItem>
+                    <FormItem style={{marginTop: '-30px'}}>
+                    <Checkbox /><span>Not a Robot</span>
+                    </FormItem>
                 </Row>
+
+                <Button 
+                    type='default'
+                    // htmlType="submit"
+                    disabled={this.hasErrors(getFieldsError())} 
+                >
+                    TEST
+                </Button>
 
             </Form>
         )
