@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Row, Col, Form, Icon, Tooltip, Select } from 'antd';
-import InputTextFormItem from '../../../Shared/Forms/InputTextFormItem';
+import { Row, Col, Form, Icon, Tooltip, Select, Input } from 'antd';
+
 import RegTestingDynamicForm from './RegTestingDynamicForm';
+import SelectCodecs from './SelectCodecs';
 
 const Option = Select.Option;
+const FormItem = Form.Item;
 
 class RegInterconnect extends Component {
 
@@ -40,31 +42,6 @@ class RegInterconnect extends Component {
         console.log(value);
     }
 
-    /* const ipAddressInput = (
-
-    )
-    */
-
-    /* const port = (
-
-    ) 
-    */
-
-    /* const codecs = (
-
-    )
-    */
-
-    /* const nocEmail = (
-
-    )
-    */
-
-    /* const nocSkype = (
-
-    )
-    */
-
     /* const interconnectionTesting = (
         
     )
@@ -77,6 +54,87 @@ class RegInterconnect extends Component {
         const nocEmailSuffix = this.state.nocEmail ? <Icon type="close-circle" onClick={this.emitEmptyHandler} id="nocEmail" /> : null;
         const nocSkypeSuffix = this.state.nocSkype ? <Icon type="close-circle" onClick={this.emitEmptyHandler} id="nocSkype" /> : null;
 
+        const { getFieldDecorator } = this.props.form;
+
+        const ipAddressInput = (
+            <FormItem label='IP Address:'>
+            {
+                getFieldDecorator('ipAddress', 
+                    {rules: [{required: true, message: "Please input ip address.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter IP Address'
+                            suffix={ipAddressSuffix}
+                            value={this.state.ipAddress}
+                            id='ipAddress'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const portInput = (
+            <FormItem label='Port:' style={{marginTop: '-15px'}}>
+            {
+                getFieldDecorator('port', 
+                    {rules: [{required: true, message: "Please input port.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter Port'
+                            suffix={portSuffix}
+                            value={this.state.port}
+                            id='port'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const nocEmail = (
+            <FormItem label='NOC Email:'>
+            {
+                getFieldDecorator('nocEmail', 
+                    {rules: [{required: true, message: "Please input noc email.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter NOC Email'
+                            suffix={nocEmailSuffix}
+                            value={this.state.nocEmail}
+                            id='nocEmail'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
+
+        const nocSkype = (
+            <FormItem label='NOC Skype:' style={{marginTop: '-10px'}}>
+            {
+                getFieldDecorator('nocSkype', 
+                    {rules: [{required: true, message: "Please input noc skype.",}]}
+                ) ( 
+                    <span>
+                        <Input
+                            placeholder='Enter NOC Skype'
+                            suffix={nocSkypeSuffix}
+                            value={this.state.nocSkype}
+                            id='nocSkype'
+                            onChange={this.onChangeInputHandler}
+                        />
+                    </span>
+                )
+            } 
+            </FormItem>
+        )
 
         return (
             <Form onSubmit={this.handleSubmit}>
@@ -84,53 +142,37 @@ class RegInterconnect extends Component {
                     <Col span={10}>
                         <Row><h1>Interconnection Profile</h1></Row>
                         <Row>
-                            <InputTextFormItem
-                                text="* IP Address:" span={24} placeholder='Enter IP Address' 
-                                suffix={ipAddressSuffix} value={this.state.ipAddress} id="ipAddress"
-                                onChange={ this.onChangeInputHandler }
-                            />
-                            <InputTextFormItem
-                                classProps={{'marginTop': '20px'}}  
-                                text="* Port:" span={24} placeholder='Enter Port' 
-                                suffix={portSuffix} value={this.state.port} id="port"
-                                onChange={ this.onChangeInputHandler }
-                            />
-                            <Col span={24} style={{'marginTop': '20px'}}>
-                                <span>* Supported Codecs: </span>
-                                <Select
-                                    showSearch
-                                    mode="multiple"
-                                    placeholder="Select Codecs"
-                                    optionFilterProp="children"
-                                    filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                                    onChange={this.codecsChangeHandler}
-                                >
-                                    <Option value="G711">G.711</Option>
-                                    <Option value="G722">G.722</Option>
-                                    <Option value="G723">G.723</Option>
-                                    <Option value="G726">G.726</Option>
-                                    <Option value="G728">G.728</Option>
-                                    <Option value="G729">G.729</Option>
-                                </Select>
+                            <Col span={24}>
+                                {ipAddressInput}
+                            </Col>
+
+                            <Col span={24}>
+                                {portInput}
+                            </Col>
+
+                            <Col span={24}>
+                                <FormItem label='Codecs:' style={{marginTop: '-10px'}}>
+                                    {
+                                        getFieldDecorator('codecs', 
+                                        {rules: [{required: true, message: 'Please select one or more codecs'}]}
+                                    ) (
+                                        <SelectCodecs />
+                                    )
+                                    }
+                                </FormItem>
                             </Col>
                         </Row>
-                        <Row style={{marginTop: '40px'}}>
+
+                        <Row>
                             <h1>NOC Contact</h1>
                         </Row>
                         <Row>
-                            <InputTextFormItem
-                                prefix={<i className='fas fa-envelope' style={{color: '#ccc'}} />}
-                                text="Email Address:" span={24} placeholder='Enter NOC Email' 
-                                suffix={nocEmailSuffix} value={this.state.nocEmail} id="nocEmail"
-                                onChange={ this.onChangeInputHandler }
-                            />
-                            <InputTextFormItem
-                                classProps={{'marginTop': '20px'}}
-                                prefix={<i className='fab fa-skype' style={{color: '#ccc'}} />}
-                                text="Email Address:" span={24} placeholder='Enter NOC Skype' 
-                                suffix={nocSkypeSuffix} value={this.state.nocSkype} id="nocSkype"
-                                onChange={ this.onChangeInputHandler }
-                            />
+                            <Col span={24}>
+                                {nocEmail}
+                            </Col>
+                            <Col span={24}>
+                                {nocSkype}
+                            </Col>
                         </Row>
                     </Col>
 
@@ -144,10 +186,7 @@ class RegInterconnect extends Component {
                                 </Tooltip>
                             </h1>
                         </Row>
-                        
-                        {/* Dynamic Form */}
                         <RegTestingDynamicForm />
-
                     </Col>
                 </Row>
             </Form>
@@ -155,4 +194,4 @@ class RegInterconnect extends Component {
     }
 }
 
-export default RegInterconnect;
+export default Form.create()(RegInterconnect);

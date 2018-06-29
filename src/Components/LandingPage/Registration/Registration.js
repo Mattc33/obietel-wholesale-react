@@ -37,7 +37,7 @@ const steps = [
 class Registration extends Component {
 
     state = {
-        current: 0
+        current: 3
     }
 
     next() {
