@@ -2,25 +2,30 @@
   padding: 10px 5% 10px 5%;
   background: #fff;
   border-bottom: 1px solid #eee;
+  height: auto;
 }
 
 .stepsContent {
   margin: 10px 5% 10px 5%;
-  height: 760px;
+  height: auto;
   background: #fff;
 }
 
 .stepAction {
-  border-top: 1px solid #eee;
+  border-top: 1px solid #ccc;
   padding: 10px 5% 0 5%;
   height: 50px;
   width: 100%;
   background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
 .stepAction .stepActionRight {
   width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-left: auto;
 }
@@ -31,5 +36,11 @@
 
 .stepAction .stepActionLeft {
   width: 50%;
+}
+
+@media (max-width: 991px) {
+  .nextButton Button {
+    width: 20vw;
+  }
 }
 /*# sourceMappingURL=Registration.css.map */

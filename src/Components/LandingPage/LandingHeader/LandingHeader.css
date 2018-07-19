@@ -4,6 +4,8 @@
 
 .menu {
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   list-style-type: none;
   margin-left: auto;

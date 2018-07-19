@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Form, Icon, Checkbox, Input, Button } from 'antd';
 import SelectCountry from './SelectCountry';
+import styles from './RegAccount.css';
 
 const FormItem = Form.Item;
 
@@ -54,7 +55,6 @@ class RegAccount extends Component {
     }
 
     render() {
-
         const firstNameSuffix = this.state.firstName ? <Icon type="close-circle" onClick={this.emitEmptyHandler} id="firstName" /> : null;
         const lastNameSuffix = this.state.lastName ? <Icon type="close-circle" onClick={this.emitEmptyHandler} id="lastName" /> : null;
         const phoneNumberSuffix = this.state.phoneNumber ? <Icon type="close-circle" onClick={this.emitEmptyHandler} id="phoneNumber" /> : null;
@@ -302,14 +302,14 @@ class RegAccount extends Component {
         return (
             <Form onSubmit={this.handleSubmit}>
                 <Row>
-                    <Col span={10}>
+                    <Col xs={24} sm={24} lg={10} xl={10}>
                         <Row><h1>Account</h1></Row>
                         <Row>
-                            <Col span={12}>
+                            <Col xs={24} sm={24} lg={12} xl={12}>
                                 {firstNameInput}
                             </Col>
                             <Col span={2} />
-                            <Col span={10}>
+                            <Col xs={24} sm={24} lg={10} xl={10}>
                                 {lastNameInput}
                             </Col>
 
@@ -338,7 +338,7 @@ class RegAccount extends Component {
 
                     <Col span={4} />
 
-                    <Col span={10}>
+                    <Col xs={24} sm={24} lg={10} xl={10}>
                         <Row><h1>Company</h1></Row>
                         <Row>
                         <Col span={24}>
@@ -347,14 +347,14 @@ class RegAccount extends Component {
                         <Col span={24}>
                             {companyAddressInput}
                         </Col>
-                        <Col span={12}>
+                        <Col xs={24} sm={24} lg={12} xl={12}>
                             {companyCity}
                         </Col>
                         <Col span={2} />
-                        <Col span={10}>
+                        <Col xs={24} sm={24} lg={10} xl={10}>
                             {companyZipcode}
                         </Col>
-                            <Col span={14} >
+                            <Col xs={24} sm={24} lg={14} xl={14} >
                                 <FormItem label='Country:' style={{'marginTop': '-10px'}}>
                                 {
                                     getFieldDecorator('companyCountry', 
@@ -370,12 +370,13 @@ class RegAccount extends Component {
                 </Row>
 
                 <Row style={{marginTop: '10px'}}>
+                    <Col span={24}>
                     <FormItem >
                         {
                             getFieldDecorator('terms', 
                                 {rules: [{required: true, message: 'checkbox'}]}
                         ) (
-                            <span>
+                            <span className={styles.termsOfService}>
                                 <Checkbox onChange={ this.changeCheckboxHandler.bind(this, 'terms') } style={{marginRight: 10}}/>
                                 I understand and agree with the <a>Terms of Service</a> and <a>Privacy Policy</a>
                             </span>
@@ -383,17 +384,18 @@ class RegAccount extends Component {
                         }
                     </FormItem>
                     <FormItem style={{marginTop: '-30px'}}>
-                    <Checkbox /><span>Not a Robot</span>
+                        <Checkbox /><span>Not a Robot</span>
                     </FormItem>
+                    </Col>
                 </Row>
 
-                <Button 
+                {/* <Button 
                     type='default'
                     // htmlType="submit"
                     disabled={this.hasErrors(getFieldsError())} 
                 >
                     TEST
-                </Button>
+                </Button> */}
 
             </Form>
         )

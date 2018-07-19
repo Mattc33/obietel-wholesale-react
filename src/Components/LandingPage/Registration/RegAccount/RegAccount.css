@@ -1,1 +1,6 @@
-/* No CSS *//*# sourceMappingURL=RegAccount.css.map */
+@media (max-width: 991px) {
+  .termsOfService {
+    font-size: .6rem;
+  }
+}
+/*# sourceMappingURL=RegAccount.css.map */

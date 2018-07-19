@@ -1,38 +1,54 @@
 .showcaseContainer {
   height: auto;
   background: #fff;
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 10% 1fr 10%;
+  -ms-grid-columns: 10% 1fr 10%;
+      grid-template-columns: 10% 1fr 10%;
   border-bottom: 1px solid #ccc;
   padding: 20px 0 20px 0;
 }
 
 .showcaseContainer .callToAction {
   font-size: 18px;
-  grid-column-start: 2;
+  -ms-grid-column: 2;
+      grid-column-start: 2;
   grid-column-end: 3;
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   grid-column-gap: 5%;
 }
 
 .showcaseContainer .callToAction .textGroup {
-  grid-column-start: 3;
+  -ms-grid-column: 3;
+      grid-column-start: 3;
   grid-column-end: 4;
-  grid-row-start: 2;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
   grid-row-end: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .showcaseContainer .callToAction .textGroup .h1 {
   font-size: 40px;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .showcaseContainer .callToAction .textGroup .getStartedButton {
   width: 70%;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .showcaseContainer .callToAction .textGroup .getStartedButton Button {
@@ -43,13 +59,17 @@
 
 .showcaseContainer .callToAction .textGroup .getStartedText {
   font-size: 12px;
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .showcaseContainer .callToAction .showcaseImage {
-  grid-column-start: 1;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
   grid-column-end: 2;
-  grid-row-start: 2;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
   grid-row-end: 3;
 }
 
@@ -68,22 +88,31 @@
     height: auto;
   }
   .showcaseContainer .callToAction {
-    grid-template-columns: 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
   .showcaseContainer .callToAction .textGroup {
     padding-top: 10px;
-    grid-column-start: 1;
-    grid-row-start: 1;
+    -ms-grid-column: 1;
+        grid-column-start: 1;
+    -ms-grid-row: 1;
+        grid-row-start: 1;
     grid-row-end: 2;
   }
   .showcaseContainer .callToAction .showcaseImage {
-    grid-column-start: 1;
-    grid-row-start: 2;
+    -ms-grid-column: 1;
+        grid-column-start: 1;
+    -ms-grid-row: 2;
+        grid-row-start: 2;
     grid-row-end: 3;
     padding: 10px 0 10px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     justify-items: center;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .showcaseContainer .callToAction .showcaseImage img {
     height: 300px;

@@ -37,7 +37,7 @@ const steps = [
 class Registration extends Component {
 
     state = {
-        current: 3
+        current: 0
     }
 
     next() {
@@ -101,15 +101,15 @@ class Registration extends Component {
                     </div>
                     
                     <div className={styles.stepAction}>
-                    <div className={styles.stepActionLeft}>
-                        <div className={styles.prevButton}>
-                            {
-                                this.state.current >= 1
-                                &&
-                                <Button style={{ marginLeft: 5 }} type="default" onClick={() => this.prev()}>Previous</Button>
-                            }
+                        <div className={styles.stepActionLeft}>
+                            <div className={styles.prevButton}>
+                                {
+                                    this.state.current >= 1
+                                    &&
+                                    <Button style={{ marginLeft: 5 }} type="default" onClick={() => this.prev()}>Previous</Button>
+                                }
+                            </div>
                         </div>
-                    </div>
                         <div className={styles.stepActionRight}>
                             <div className={styles.nextButton}>
                                 {
@@ -120,17 +120,17 @@ class Registration extends Component {
                                 {
                                     this.state.current === 1
                                     &&
-                                    <Button type="default" onClick={() => this.next()} disabled={false}>Next(Contract)</Button>
+                                    <Button type="default" onClick={() => this.next()} disabled={false}>Next</Button>
                                 }
                                 {
                                     this.state.current === 2
                                     &&
-                                    <Button type="default" onClick={() => {this.clickInterconnect(); this.next();}} disabled={false}>Next(Interconnect)</Button>
+                                    <Button type="default" onClick={() => {this.clickInterconnect(); this.next();}} disabled={false}>Next</Button>
                                 }
                                 {
                                     this.state.current === 3
                                     &&
-                                    <Button type="default" onClick={() => {this.clickBilling(); this.next();}} disabled={false}>Next(Billing)</Button>
+                                    <Button type="default" onClick={() => {this.clickBilling(); this.next();}} disabled={false}>Next</Button>
                                 }
                                 {
                                     this.state.current === steps.length - 1
